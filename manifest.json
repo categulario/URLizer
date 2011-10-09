@@ -2,6 +2,7 @@
   "name": "URLizer",
   "version": "1.2",
   "description": "Convert any text to a URL suitable form",
+  "icons":{"128":"icon_128.png"},
   "browser_action": {
     "default_icon": "icon.png",
     "default_title":"URLizer",
