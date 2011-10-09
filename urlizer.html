@@ -1,0 +1,150 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"><style>
+label{
+	width:100px;
+	float:left;
+	margin:5px;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-weight:bold;
+	color:#09C;
+}
+input[type='text']{
+	margin:5px;
+	width:300px;
+	height:30px;
+	-webkit-border-radius:7px;
+	font-family:"Courier New", Courier, monospace;
+	color:#666;
+	font-size:16px;
+	font-weight:bold;
+}
+#main{
+	padding:10px;
+	background:#FC6;
+	-webkit-border-radius:10px;
+}
+#credits{
+	text-align:center;
+	font-size:10px;
+}
+</style>
+    <script type="text/javascript" language="javascript">
+	function uzr(str,rs)
+	{// Convierte una cadena a algo utilizable en una URL
+	/*solo permite pasar las letras, guiones y guiones bajos
+	*el resto desaparece
+	*
+	*/
+		str=str.toLowerCase();
+		news="";
+		for(i=0;i<str.length;i++)
+		{
+			switch(str.charAt(i))
+			{
+				case "a":
+				case "b":
+				case "c":
+				case "d":
+				case "e":
+				case "f":
+				case "g":
+				case "h":
+				case "i":
+				case "j":
+				case "k":
+				case "l":
+				case "m":
+				case "n":
+				case "o":
+				case "p":
+				case "q":
+				case "r":
+				case "s":
+				case "t":
+				case "u":
+				case "v":
+				case "w":
+				case "x":
+				case "y":
+				case "z":
+				case "_":
+				case "0":
+				case "1":
+				case "2":
+				case "3":
+				case "4":
+				case "5":
+				case "6":
+				case "7":
+				case "8":
+				case "9":
+					news+=str.charAt(i);
+				break;
+				case " ":
+					news+="_";
+				break;
+				default:
+					if(str.charCodeAt(i)==225)
+					{// a agudo
+						news+="a";
+					} else
+					if(str.charCodeAt(i)==233)
+					{// e agudo
+						news+="e";
+					} else
+					if(str.charCodeAt(i)==237)
+					{// i agudo
+						news+="i";
+					} else
+					if(str.charCodeAt(i)==243)
+					{// o agudo
+						news+="o";
+					} else
+					if(str.charCodeAt(i)==250)
+					{// u agudo
+						news+="u";
+					} else
+					if(str.charCodeAt(i)==241)
+					{// n tilde
+						news+="n";
+					} else
+					if(str.charCodeAt(i)==252)
+					{// u dieresis
+						news+="u";
+					} else {
+						if(rs){
+							//Para respetar los slashes y otras cosas
+							var c = str.charAt(i);
+							if(c == "/" || c == ":" || c == "=" || c == "?" || c == "#" || c == "+" || c == "&" || c == "%" || c == "."){
+								news+=c;
+							}
+						} else {
+							news+="_";
+						}
+					}
+				break;
+			}
+		}
+		return news;
+	}
+</script>
+  </head>
+  <body>
+    <div id="main">
+      <form method="post" id="uzr_form">
+      	<label for="text">Your text:</label>
+        <input name="text" value="" id="uzr_text" type="text"><br>
+        <input type="checkbox" name="slash" id="uzr_respect_slashes">Respect slashes and other symbols<br/>
+        <label for="url">The URL:</label>
+        <input name="url" value="" id="uzr_url" type="text">
+      </form>
+      <div id="credits">Credits: <a href="http://www.twitter.com/abram_92"
+          target="_blank">@abram_92</a></div>
+    </div>
+    <script type="text/javascript" language="javascript">
+	document.getElementById("uzr_text").addEventListener("keyup",function(evt){
+		document.getElementById("uzr_url").setAttribute("value",uzr(document.getElementById("uzr_text").value,document.getElementById("uzr_respect_slashes").checked));
+	});
+</script></body>
+</html>
