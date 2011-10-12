@@ -1,6 +1,6 @@
 {
   "name": "URLizer",
-  "version": "1.2",
+  "version": "1.3",
   "description": "Converts plain text into a URL suitable form",
   "icons":{"128":"icon_128.png"},
   "browser_action": {
